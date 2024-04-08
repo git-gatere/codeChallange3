@@ -1,24 +1,24 @@
-function displayMovieDetails (){
+function MovieDetails (){
     
     fetch('http://localhost:3000/films/1')
-    //The then() method is chained to the fetch call to handle the promise returned by the fetch function.
+    
     .then(function(response) {
-       // When the fetch operation is successful, the response is converted to JSON format using response.json().
+      //converts to JSON format using response.json().
         return response.json();
       })
-      //then() method is used again to pass the movie data to the presentDetailsOfMovie() function for rendering the movie details on the frontend.
+      
       .then(function(movie) {
        
-        displayMovieDetails(movie);
+        MovieDetails(movie);
       })
-     // The catch() method is used to handle any errors that may occur during the fetch operation. If an error occurs, it will be logged to the console using console.error().//
+     // Handle any errors that may occur during the fetch operation.
       .catch(function(error) {
        
         console.error('Error fetching movie details:', error);
       });
     }
     //This event ensures that the JavaScript code inside the event listener will run after the HTML content is fully loaded.
-    document.addEventListener('DOMContentLoaded',displayMovieDetails())
+    document.addEventListener('DOMContentLoaded',MovieDetails())
     
     const poster = document.getElementById('poster');
     poster.src="https://www.gstatic.com/tv/thumb/v22vodart/2157/p2157_v_v8_ab.jpg";
